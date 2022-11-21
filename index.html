@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>img</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script type='text/javascript' src='knockout-3.5.1.js'></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<div class="page-bed-constructor">
+    <button class="btn btn-default" type="button" data-bind="click: save">save to img</button>
+    <div class="container">
+        <div class="stage">
+            <canvas id="b1-layer" width="1500" height="800"></canvas>
+            <canvas id="b2-layer" width="1500" height="800"></canvas>
+    <!--        <canvas id="b3-layer" width="1800" height="800"></canvas>-->
+            <canvas id="background-layer" width="1500" height="800"></canvas>
+            <canvas id="toSave" width="1500" height="800" style="display: none"></canvas>
+        </div>
+
+        <div class="buttons-container">
+            <div>
+                <div>Части 1</div>
+                <ul class="image-list" data-bind="foreach: { data: b1_listImages, as: 'item' }">
+                    <li class="image-list-item">
+                        <button data-bind="click: $parent.selectB1">
+    <!--                        <div data-bind="text: item.name"></div>-->
+                            <img data-bind="attr: {src: item.name}"/>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div>Части 2</div>
+                <ul class="image-list" data-bind="foreach: { data: b2_listImages, as: 'item' }">
+                    <li class="image-list-item">
+                        <button data-bind="click: $parent.selectB2">
+        <!--                    <div data-bind="text: item.name"></div>-->
+                            <img data-bind="attr: {src: item.name}"/>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+    <!--        <button class="btn btn-default" type="button" data-bind="click: next_b1">next b1</button>-->
+    <!--        <button class="btn btn-default" type="button" data-bind="click: next_b2">next b2</button>-->
+            <!--        <button class="btn btn-default" type="button" data-bind="click: next_b3">next b3</button>-->
+
+        </div>
+    </div>
+
+</div>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .image-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .image-list .image-list-item {
+            max-width: 250px;
+            list-style-type: none;
+        }
+        .image-list .image-list-item img {
+            width: 100%;
+        }
+
+        .stage {
+            width: 1500px;
+            height: 800px;
+            position: relative;
+            /*border: 1px solid black;*/
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #b1-layer { z-index: 2; }
+        #b2-layer { z-index: 3; }
+        #b3-layer { z-index: 4; }
+        #background-layer { z-index: 1; }
+    </style>
+</body>
+</html>
